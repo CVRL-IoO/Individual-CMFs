@@ -5,23 +5,22 @@ Created on Tue Aug 09 13:23:40 2016
 @author: Caesar
 
 Related files:
-*.ui  Qt4 designer files defining GUI components and layouts
+*.ui  Qt5 designer files defining GUI components and layouts
 
 /CMFs_out directory required for data output
 """
 
-import time, sys, os, shutil, ctypes
+import time, sys, os, ctypes
 
 import numpy as np
 
-import openpyxl
+import openpyxl #For writing Excel files
 
 import CMFcalc, CMFtemplates #CMF modules
 
 from CMFplot import CMFPlot #CMF plotting class
 
 from PyQt5 import QtWidgets, QtCore, uic #pyqt stuff
-from PyQt5.QtGui import QFont
 
  
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
