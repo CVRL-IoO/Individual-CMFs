@@ -856,7 +856,7 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         XLbook=openpyxl.Workbook()
         XLbook.remove(XLbook.worksheets[0])
         
-        #Write Excel file according to flags set on input GUI in data output directory
+        #Write Excel worksheets according to flags set on input GUI in data output directory
         if self.mainCMFgen.CMFinfo['linAbs']:
             wslinAbs = XLbook.create_sheet("Lin absorbance")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
@@ -944,7 +944,7 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         XLbook=openpyxl.Workbook()
         XLbook.remove(XLbook.worksheets[0])
 
-        #Write csv files according to flags set on input GUI in data output directory
+        #Write Excel worksheets according to flags set on input GUI in data output directory
         if self.mainCMFgen.CMFinfo['linAbs']:
             wslinAbs = XLbook.create_sheet("Lin absorbance")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
