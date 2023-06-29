@@ -947,72 +947,54 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
 
         #Write csv files according to flags set on input GUI in data output directory
         if self.mainCMFgen.CMFinfo['linAbs']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_lin_Abs.csv', self.coneabs_template_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_lin_Abs.csv written.')
             wslinAbs = XLbook.create_sheet("Lin absorbance")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.coneabs_template_N.tolist():
                 wslinAbs.append(row)
 
         if self.mainCMFgen.CMFinfo['logAbs']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_log_Abs.csv', self.log_coneabs_template_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_log_Abs.csv written.')
             wslinAbs = XLbook.create_sheet("Log absorbance")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.log_coneabs_template_N.tolist():
                 wslinAbs.append(row)
                 
         if self.mainCMFgen.CMFinfo['linQretina']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linQ_retina.csv', self.conenewq_retina_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linQ_retina.csv written.')
             wslinAbs = XLbook.create_sheet("Lin retinal (Quanta)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.conenewq_retina_N.tolist():
                 wslinAbs.append(row)
                 
         if self.mainCMFgen.CMFinfo['logQretina']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logQ_retina.csv', self.log_conenewq_retina_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logQ_retina.csv written.')
             wslinAbs = XLbook.create_sheet("Log retinal (Quanta)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.log_conenewq_retina_N.tolist():
                 wslinAbs.append(row)
                 
         if self.mainCMFgen.CMFinfo['linQcornea']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linQ_cornea.csv', self.conenewq_cornea_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linQ_cornea.csv written.')
             wslinAbs = XLbook.create_sheet("Lin corneal (Quanta)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.conenewq_cornea_N.tolist():
                 wslinAbs.append(row)
 
         if self.mainCMFgen.CMFinfo['logQcornea']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logQ_cornea.csv', self.log_conenewq_cornea_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logQ_cornea.csv written.')
             wslinAbs = XLbook.create_sheet("Log corneal (Quanta)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.log_conenewq_cornea_N.tolist():
                 wslinAbs.append(row)
 
         if self.mainCMFgen.CMFinfo['linEcornea']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linE_cornea.csv', self.conenewe_cornea_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_linE_cornea.csv written.')
             wslinAbs = XLbook.create_sheet("Lin corneal (Energy)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.conenewe_cornea_N.tolist():
                 wslinAbs.append(row)
 
         if self.mainCMFgen.CMFinfo['logEcornea']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logE_cornea.csv', self.log_conenewe_cornea_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_logE_cornea.csv written.')
             wslinAbs = XLbook.create_sheet("Log corneal (Energy)")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.log_conenewe_cornea_N.tolist():
                 wslinAbs.append(row)
 
         if self.mainCMFgen.CMFinfo['RGBCMFs']:
-            # np.savetxt('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_RGBCMFs.csv', self.RGBCMFs_N, delimiter=",")
-            # print ('CMFs_out/' + self.mainCMFgen.CMFinfo['DirName'] + '/' + self.mainCMFgen.CMFinfo['FileName'] + '_RGBCMFs.csv written.')
             wslinAbs = XLbook.create_sheet("RGB CMFs")
             wslinAbs.append(['Wavelength', 'L', 'M', 'S'])
             for row in self.RGBCMFs_N.tolist():
