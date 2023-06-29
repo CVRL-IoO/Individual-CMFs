@@ -223,9 +223,8 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         self.initCMFsInputScreen()
         
         self.mainCMFgen.CMFinfo = self.readFromGui()
-        
-        # self.adjustLayout()
-        
+
+ 
     def scaleThing(self,thing,alpha):
 
         if self.scaleFactor>140:
