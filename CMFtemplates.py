@@ -431,7 +431,7 @@ def lens(nm):   #Lens best-fitting 9x2 Fourier Series Polynomial to Stockman_Sha
 
     for n in range (0, len(x)): #Add zeros > 660 nm
 
-        if x[n] <= ((660-390)/95.49296586):    
+        if x[n] <= ((660-360)/95.49296586):    
             y[n] = (c[0] + c[1]*np.cos(x[n]) + c[2]*np.sin(x[n]) + c[3]*np.cos(2*x[n]) + c[4]*np.sin(2*x[n]) + \
                 c[5]*np.cos(3*x[n]) + c[6]*np.sin(3*x[n]) + c[7]*np.cos(4*x[n]) + c[8]*np.sin(4*x[n]) + \
                 c[9]*np.cos(5*x[n]) + c[10]*np.sin(5*x[n]) + c[11]*np.cos(6*x[n]) + c[12]*np.sin(6*x[n]) + \
@@ -439,7 +439,7 @@ def lens(nm):   #Lens best-fitting 9x2 Fourier Series Polynomial to Stockman_Sha
                 c[17]*np.cos(9*x[n]) + c[18]*np.sin(9*x[n])) * c[19]
            
       
-        if x[n] > ((660-390)/95.49296586): 
+        if x[n] > ((660-360)/95.49296586): 
             
             y[n]=0
 
