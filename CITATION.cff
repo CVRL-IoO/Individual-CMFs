@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Stockman"
+  given-names: "Andrew"
+  orcid: "https://orcid.org/0000-0001-9807-6289"
+- family-names: "Rider"
+  given-names: "Andrew"
+  orcid: "https://orcid.org/0000-0001-8251-1100"
+title: "Pyconefundamntals"
+version: 1.0.1
+doi: 10.5281/zenodo.8273420
+date-released: 2023-08-23
+url: "https://github.com/CVRL-IoO/Individual-CMFs.git"
