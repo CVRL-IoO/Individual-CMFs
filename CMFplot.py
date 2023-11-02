@@ -6,6 +6,7 @@ Created on Wed Aug 10 15:15:26 2016
 
 
 import matplotlib
+import matplotlib.pyplot
 
 matplotlib.use("Qt5Agg")
 

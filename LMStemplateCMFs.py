@@ -36,8 +36,12 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         
         #Main CSF window
         #For qt window scaling, environment variable: QT_AUTO_SCREEN_SCALE_FACTOR=0 () in winpython.ini
-        
-        self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+
+        if hasattr(ctypes, 'windll'): #Windows only
+            self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        else: #Default to 100% scaling
+            self.scaleFactor = 100
+
         self.mainCMFgen = uic.loadUi('inputCMFgenerate.ui')  #GUI screen (defaults)
         
         #Initialise window position and size depending on screen size and scaling
