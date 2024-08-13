@@ -85,7 +85,7 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
 
         #Codon shifts for M->L Edit here for changes
         self.M_L_116baseshift = 0
-        self.M_L_180baseshift = 4
+        self.M_L_180baseshift = 3
         self.M_L_230baseshift = 3
         self.M_L_233baseshift = 0
         self.M_L_277baseshift = 7
