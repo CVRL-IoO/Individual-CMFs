@@ -1,3 +1,13 @@
+v1.0.2
+
+Correction
+
+LMStemplateCMFs.py
+
+Line 88
+
+        self.M_L_180baseshift = 3 #Was 4
+
 v1.0.1
 
 Corrections
