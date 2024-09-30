@@ -18,6 +18,8 @@ import openpyxl #For writing Excel files
 
 import CMFcalc, CMFtemplates #CMF modules
 
+import platform
+
 from CMFplot import CMFPlot #CMF plotting class
 
 from PyQt5 import QtWidgets, QtCore, uic #pyqt stuff
@@ -36,8 +38,12 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         
         #Main CSF window
         #For qt window scaling, environment variable: QT_AUTO_SCREEN_SCALE_FACTOR=0 () in winpython.ini
-        
-        self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        if platform.system() == 'Windows':
+            self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        else:
+            # For macOS and other systems, use Qt functions
+            screen = QtWidgets.QApplication.primaryScreen()
+            self.scaleFactor = screen.devicePixelRatio()
         self.mainCMFgen = uic.loadUi('inputCMFgenerate.ui')  #GUI screen (defaults)
         
         #Initialise window position and size depending on screen size and scaling
@@ -226,10 +232,16 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
  
     def scaleThing(self,thing,alpha):
 
-        if self.scaleFactor>140:
-            fontS=200/self.scaleFactor*alpha
+        if platform.system() == 'Windows':
+            if self.scaleFactor>140:
+                fontS=200/self.scaleFactor*alpha
+            else:
+                fontS=100/self.scaleFactor*alpha
         else:
-            fontS=100/self.scaleFactor*alpha
+            if self.scaleFactor > 1.4:
+                fontS = 2.0 / self.scaleFactor * alpha
+            else:
+                fontS = 1.0 / self.scaleFactor * alpha
         thisFont=thing.font()
         thisFSize=thisFont.pointSize()
         thisFont.setPointSize(int(thisFSize*fontS))
