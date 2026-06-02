@@ -10,7 +10,7 @@ Related files:
 /CMFs_out directory required for data output
 """
 
-import time, sys, os, ctypes
+import time, sys, os, ctypes, platform
 
 import numpy as np
 
@@ -22,9 +22,10 @@ from CMFplot import CMFPlot #CMF plotting class
 
 from PyQt5 import QtWidgets, QtCore, uic #pyqt stuff
 
- 
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
+whatOS = platform.system()
+if whatOS=='Windows':
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
 
 
 
@@ -36,9 +37,12 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         
         #Main CSF window
         #For qt window scaling, environment variable: QT_AUTO_SCREEN_SCALE_FACTOR=0 () in winpython.ini
-        
-        self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        if whatOS=='Windows':
+            self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        elif whatOS=='Darwin':
+            self.scaleFactor = app.primaryScreen().devicePixelRatio()
         self.mainCMFgen = uic.loadUi('inputCMFgenerate.ui')  #GUI screen (defaults)
+        
         
         #Initialise window position and size depending on screen size and scaling
         if screenheight/self.scaleFactor*100.0>1080:
@@ -85,7 +89,7 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
 
         #Codon shifts for M->L Edit here for changes
         self.M_L_116baseshift = 0
-        self.M_L_180baseshift = 3
+        self.M_L_180baseshift = 4
         self.M_L_230baseshift = 3
         self.M_L_233baseshift = 0
         self.M_L_277baseshift = 7
@@ -156,64 +160,64 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
         else:
             self.LM_codons.setGeometry(200,50,round(620/self.scaleFactor*100.0),round(580/self.scaleFactor*100.0))
         
+        if whatOS=='Windows':    
+            allmainFrames = self.mainCMFgen.findChildren(QtWidgets.QFrame)
+    
+            for thisFrame in allmainFrames:
+                self.scaleThing(thisFrame,self.mainCMFgen.geometry().height()/1000)
+                
+            allmainButtons = self.mainCMFgen.findChildren(QtWidgets.QPushButton)
+            for thisButton in allmainButtons:
+                self.scaleThing(thisButton,self.mainCMFgen.geometry().height()/1000)
+                
+            # allmainLabels = self.mainCMFgen.findChildren(QtWidgets.QLabel)#all QLabel objects get moved/resized by QFrame above
+            # for thisLabel in allmainLabels:
+            #     self.scaleThing(thisLabel,self.mainCMFgen.geometry().height()/1000)
+                
+            allmainLEdits = self.mainCMFgen.findChildren(QtWidgets.QLineEdit)
+            for thisEdit in allmainLEdits:
+                self.scaleThing(thisEdit,self.mainCMFgen.geometry().height()/1000)
+                
+            allmainChecks = self.mainCMFgen.findChildren(QtWidgets.QCheckBox)
+            for thisCheck in allmainChecks:
+                self.scaleThing(thisCheck,self.mainCMFgen.geometry().height()/1000)
+                
+            allmainRadios = self.mainCMFgen.findChildren(QtWidgets.QRadioButton)
+            for thisRadio in allmainRadios:
+                self.scaleThing(thisRadio,self.mainCMFgen.geometry().height()/1000)
+                
+            allmainGroups = self.mainCMFgen.findChildren(QtWidgets.QGroupBox)
+            for thisGroup in allmainGroups:
+                self.scaleThing(thisGroup,self.mainCMFgen.geometry().height()/1000)
             
-        allmainFrames = self.mainCMFgen.findChildren(QtWidgets.QFrame)
-
-        for thisFrame in allmainFrames:
-            self.scaleThing(thisFrame,self.mainCMFgen.geometry().height()/1000)
             
-        allmainButtons = self.mainCMFgen.findChildren(QtWidgets.QPushButton)
-        for thisButton in allmainButtons:
-            self.scaleThing(thisButton,self.mainCMFgen.geometry().height()/1000)
-            
-        # allmainLabels = self.mainCMFgen.findChildren(QtWidgets.QLabel)#all QLabel objects get moved/resized by QFrame above
-        # for thisLabel in allmainLabels:
-        #     self.scaleThing(thisLabel,self.mainCMFgen.geometry().height()/1000)
-            
-        allmainLEdits = self.mainCMFgen.findChildren(QtWidgets.QLineEdit)
-        for thisEdit in allmainLEdits:
-            self.scaleThing(thisEdit,self.mainCMFgen.geometry().height()/1000)
-            
-        allmainChecks = self.mainCMFgen.findChildren(QtWidgets.QCheckBox)
-        for thisCheck in allmainChecks:
-            self.scaleThing(thisCheck,self.mainCMFgen.geometry().height()/1000)
-            
-        allmainRadios = self.mainCMFgen.findChildren(QtWidgets.QRadioButton)
-        for thisRadio in allmainRadios:
-            self.scaleThing(thisRadio,self.mainCMFgen.geometry().height()/1000)
-            
-        allmainGroups = self.mainCMFgen.findChildren(QtWidgets.QGroupBox)
-        for thisGroup in allmainGroups:
-            self.scaleThing(thisGroup,self.mainCMFgen.geometry().height()/1000)
-        
-        
-        allCodFrames = self.LM_codons.findChildren(QtWidgets.QFrame)
-        for thisFrame in allCodFrames:
-            self.scaleThing(thisFrame,self.LM_codons.geometry().height()/580)
-            
-        allCodButtons = self.LM_codons.findChildren(QtWidgets.QPushButton)
-        for thisButton in allCodButtons:
-            self.scaleThing(thisButton,self.LM_codons.geometry().height()/580)
-            
-        # allCodLabels = self.LM_codons.findChildren(QtWidgets.QLabel)#all QLabel objects get moved/resized by QFrame above
-        # for thisLabel in allCodLabels:
-        #     self.scaleThing(thisLabel,self.LM_codons.geometry().height()/580)
-            
-        allCodLEdits = self.LM_codons.findChildren(QtWidgets.QLineEdit)
-        for thisEdit in allCodLEdits:
-            self.scaleThing(thisEdit,self.LM_codons.geometry().height()/580)
-            
-        allCodChecks = self.LM_codons.findChildren(QtWidgets.QCheckBox)
-        for thisCheck in allCodChecks:
-            self.scaleThing(thisCheck,self.LM_codons.geometry().height()/580)
-            
-        allCodRadios = self.LM_codons.findChildren(QtWidgets.QRadioButton)
-        for thisRadio in allCodRadios:
-            self.scaleThing(thisRadio,self.LM_codons.geometry().height()/580)
-            
-        allCodGroups = self.LM_codons.findChildren(QtWidgets.QGroupBox)
-        for thisGroup in allCodGroups:
-            self.scaleThing(thisGroup,self.LM_codons.geometry().height()/580)
+            allCodFrames = self.LM_codons.findChildren(QtWidgets.QFrame)
+            for thisFrame in allCodFrames:
+                self.scaleThing(thisFrame,self.LM_codons.geometry().height()/580)
+                
+            allCodButtons = self.LM_codons.findChildren(QtWidgets.QPushButton)
+            for thisButton in allCodButtons:
+                self.scaleThing(thisButton,self.LM_codons.geometry().height()/580)
+                
+            # allCodLabels = self.LM_codons.findChildren(QtWidgets.QLabel)#all QLabel objects get moved/resized by QFrame above
+            # for thisLabel in allCodLabels:
+            #     self.scaleThing(thisLabel,self.LM_codons.geometry().height()/580)
+                
+            allCodLEdits = self.LM_codons.findChildren(QtWidgets.QLineEdit)
+            for thisEdit in allCodLEdits:
+                self.scaleThing(thisEdit,self.LM_codons.geometry().height()/580)
+                
+            allCodChecks = self.LM_codons.findChildren(QtWidgets.QCheckBox)
+            for thisCheck in allCodChecks:
+                self.scaleThing(thisCheck,self.LM_codons.geometry().height()/580)
+                
+            allCodRadios = self.LM_codons.findChildren(QtWidgets.QRadioButton)
+            for thisRadio in allCodRadios:
+                self.scaleThing(thisRadio,self.LM_codons.geometry().height()/580)
+                
+            allCodGroups = self.LM_codons.findChildren(QtWidgets.QGroupBox)
+            for thisGroup in allCodGroups:
+                self.scaleThing(thisGroup,self.LM_codons.geometry().height()/580)
             
         self.connectButtons()
         
@@ -227,7 +231,7 @@ class individualtemplatesCMFs(QtWidgets.QMainWindow):
     def scaleThing(self,thing,alpha):
 
         if self.scaleFactor>140:
-            fontS=200/self.scaleFactor*alpha
+            fontS=150/self.scaleFactor*alpha
         else:
             fontS=100/self.scaleFactor*alpha
         thisFont=thing.font()

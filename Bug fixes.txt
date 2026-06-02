@@ -1,3 +1,44 @@
+v1.0.3
+
+Update
+LMStemplateCMFs.py to run in MacOS
+Thanks to Akvile Sinkeviciute and William Birkett for suggesting these changes
+Line 13 added platform module to import
+
+Line 25-26
+	whatOS = platform.system()
+	if whatOS=='Windows':
+Lines 27-28 indented
+
+Line 40-43 
+	if whatOS=='Windows':
+            self.scaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0) #Windows optimize GUI for different Windows scale factors
+        elif whatOS=='Darwin':
+            self.scaleFactor = app.primaryScreen().devicePixelRatio()
+
+Lines 163
+	if whatOS=='Windows':
+Lines 164-220 indented
+
+
+Corrections
+
+CMFtemplates.py
+
+Lines 24-26
+	Soffset = 1.048690123          #relative to Lser 0 to pi #Was -1.048690123
+	Moffset = 0.2036522967         #relative to Lser 0 to pi #Was -0.2036522967
+	Lalaoffset = 0.01775262143     #relative to Lser 0 to pi #Was -0.01775262143
+
+Line 170
+	Mlmax_template=529.8 #Was 529.9
+
+Line 210
+	 Slmax_template=417.0 #Was 416.9
+Line 233
+	c[17] = 0.0002347648 #Was 0.0002358232
+
+
 v1.0.2
 
 Correction
@@ -7,6 +48,7 @@ LMStemplateCMFs.py
 Line 88
 
         self.M_L_180baseshift = 3 #Was 4
+
 
 v1.0.1
 
@@ -19,5 +61,3 @@ Line 435
 
 Line 443
         if x[n] > ((660-360)/95.49296586):  #Was (660-390)
-        
-        

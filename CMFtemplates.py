@@ -21,9 +21,9 @@ def LMSconelogcommon(nm, LMS, shift):   #Best-fitting log-lin 8x2 Fourier Series
     Scommonlmax = 418.5
 
 # Log shifts in lmax from Lser with log 390 to log 850 scaled 0 to pi
-    Soffset = -1.048690123          #relative to Lser 0 to pi
-    Moffset = -0.2036522967         #relative to Lser 0 to pi
-    Lalaoffset = -0.01775262143     #relative to Lser 0 to pi	
+    Soffset = 1.048690123          #relative to Lser 0 to pi
+    Moffset = 0.2036522967         #relative to Lser 0 to pi
+    Lalaoffset = 0.01775262143     #relative to Lser 0 to pi	
     Lseroffset= 0  	
 
 
@@ -167,7 +167,7 @@ def Mconelog(nm, Mshift):  #M template best-fitting log-lin 8x2 Fourier Series P
 
     x=(np.log10(nm)-2.556302500767287267)/0.1187666467581842301 #Rescales log 360 - log 850 to 0 to pi
 
-    Mlmax_template=529.9  #Known lmax with no shift
+    Mlmax_template=529.8  #Known lmax with no shift
     xshift = np.log10(Mlmax_template/(Mlmax_template+Mshift))/0.1187666467581842301
     x=x + xshift
     
@@ -207,7 +207,7 @@ def Sconelog(nm, Sshift):   #New S template best-fitting log-lin 8x2 Fourier Ser
  
     x=(np.log10(nm)-2.556302500767287267)/0.1187666467581842301 #Rescales log 360 - log 850 to 0 to pi
 
-    Slmax_template=416.9  #lmax with no shift
+    Slmax_template=417.0  #lmax with no shift
     xshift = np.log10(Slmax_template/(Slmax_template+Sshift))/0.1187666467581842301
     x=x + xshift
 
@@ -230,7 +230,7 @@ def Sconelog(nm, Sshift):   #New S template best-fitting log-lin 8x2 Fourier Ser
     c[14] = 5.3656615075
     c[15] = 0.7898783086
     c[16] = -0.1480357836
-    c[17] = 0.0002358232
+    c[17] = 0.0002347648
 
     y = c[0] + c[1]*np.cos(x) + c[2]*np.sin(x) + c[3]*np.cos(2*x) + c[4]*np.sin(2*x)\
         + c[5]*np.cos(3*x) + c[6]*np.sin(3*x) + c[7]*np.cos(4*x) + c[8]*np.sin(4*x)\
