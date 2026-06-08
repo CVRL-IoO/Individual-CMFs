@@ -21,7 +21,7 @@ def absorptancefromabsorbance(LMSabsf, Lod, Mod, Sod, loglin):  #Calculates LMS 
 
     if loglin == 'log':
         for n in range (1,4):
-            LMSabtanceout[:,n] = np.log10(LMSabsf[:,n])             #Log absorbances
+            LMSabtanceout[:,n] = np.log10(LMSabtanceout[:,n])             #Log absorbances
 
     return LMSabtanceout
 
