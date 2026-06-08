@@ -38,6 +38,10 @@ Line 210
 Line 233
 	c[17] = 0.0002347648 #Was 0.0002358232
 
+CMFcalc.py
+Thanks to Alex Forsythe for spotting the following error
+Line 24
+	LMSabtanceout[:,n] = np.log10(LMSabtanceout[:,n]) #Was np.log10(LMSabsf[:,n])
 
 v1.0.2
 
